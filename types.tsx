@@ -9,14 +9,15 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList { }
   }
 }
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  Modal: undefined;
   NotFound: undefined;
+  AlbumScreen: undefined;
+  HomeScreen: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -25,11 +26,28 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
 >;
 
 export type RootTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  Home: undefined;
+  Search: undefined;
+  Library: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
   BottomTabScreenProps<RootTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>
 >;
+
+export type AlbumTypes = {
+  id: string,
+  name: string,
+  by: string,
+  numberOfLikes: number,
+  imageUri: string,
+  artistsHeadline: string,
+}
+
+export type Song = {
+  id: string,
+  imageUri: string,
+  title: string,
+  artist: string
+}
